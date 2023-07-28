@@ -3,11 +3,22 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import CompanyData from './components/CompanyData';
 function App(): JSX.Element {
+  const fruit = (value) => {
+    console.warn(value);
+  }
+
+
   return (
     <View>
       <Text style={{ fontSize: 30 }}>Components</Text>
       <UserData />
       <CompanyData />
+      {/* <Button title="with ()" color={'red'} onPress={fruit()} /> */}
+      <Button title="without call () " color={'green'} onPress={fruit} />
+      <Button
+        title="with arrow () to pass parms"
+        onPress={() => fruit('apple')}
+      />
     </View>
   );
 }
