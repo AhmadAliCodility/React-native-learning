@@ -1,29 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { Text, StyleSheet, View } from 'react-native';
-import externalStyles from './style';
+import { Text, StyleSheet, View, TextInput, Button } from 'react-native';
 function App(): JSX.Element {
+  const [name, setName] = useState('');
   return (
     <View>
-      <Text style={{ fontSize: 30, color: 'red' }}>Inline Style in react-native</Text>
-      <Text style={styles.textBox}>Internal in react-native</Text>
-      <Text style={externalStyles.textBox}>External in react-native</Text>
-      <Text style={[styles.textBox, externalStyles.textBox]}>2 styles applied</Text>
+      <Text style={{ fontSize: 30 }}>Handle Text Input</Text>
+      <Text style={{ fontSize: 30 }}>Your Name is: {name}</Text>
+      <TextInput
+        style={styles.textInput}
+        placeholder="Enter name"
+        value={name}
+        // onChangeText={setName}
+        onChangeText={text => setName(text)}
+      />
+      <Button title="Clear Input" onPress={() => setName('')} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  textBox: {
-    color: 'blue',
-    backgroundColor: 'yellow',
-    fontSize: 30,
-    padding: 10,
-    borderRadius: 10,
-    height: 100,
-    textAlignVertical: 'center',
-    textAlign: 'center',
+  textInput: {
+    fontSize: 20,
     borderWidth: 2,
+    margin: 10,
   },
 });
 
