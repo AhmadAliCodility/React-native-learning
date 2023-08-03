@@ -1,24 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { Button, Text, View } from 'react-native';
-
+import { Text, StyleSheet, View } from 'react-native';
+import externalStyles from './style';
 function App(): JSX.Element {
-  const [name, setName] = useState('AHmad');
   return (
     <View>
-      <Text style={{ fontSize: 30 }}>Propss in react-native</Text>
-      <User name={name} />
-      <Button title="Click here" onPress={() => setName('Ali')} />
+      <Text style={{ fontSize: 30, color: 'red' }}>Inline Style in react-native</Text>
+      <Text style={styles.textBox}>Internal in react-native</Text>
+      <Text style={externalStyles.textBox}>External in react-native</Text>
+      <Text style={[styles.textBox, externalStyles.textBox]}>2 styles applied</Text>
     </View>
   );
 }
-function User(props): JSX.Element {
-  console.warn(props)
-  return (
-    <View>
-      <Text style={{ fontSize: 30 }}>Child Component {props.name}</Text>
-    </View>
-  );
-}
+
+const styles = StyleSheet.create({
+  textBox: {
+    color: 'blue',
+    backgroundColor: 'yellow',
+    fontSize: 30,
+    padding: 10,
+    borderRadius: 10,
+    height: 100,
+    textAlignVertical: 'center',
+    textAlign: 'center',
+    borderWidth: 2,
+  },
+});
 
 export default App;
